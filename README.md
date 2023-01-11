@@ -60,3 +60,34 @@ Elasticsearch REST Client 의존성 추가
     <version>7.10.2</version>
 </dependency>
 ```
+
+## Elasticsearch Setting
+ELK Stack Version: 7.10.2 OSS
+
+### Docker-Compose Structure
+`./docker` 기준 Dockerfile 구성
+```bash
+./docker
+├── docker-compose.yml
+├── elasticsearch
+│   ├── Dockerfile
+│   └── config
+│       └── elasticsearch.yml
+└── kibana
+    ├── Dockerfile
+    └── config
+        └── kibana.yml
+```
+
+### Elasticsearch
+[elastic](https://www.docker.elastic.co/r/elasticsearch/elasticsearch-oss)에서 제공하는 Elasticsearch 이미지를 가져오고 `elasticsearch.yml`을 커스텀한 파일로 변경
+```Dockerfile
+FROM docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
+COPY ./config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
+```
+### Kibana
+```Dockerfile
+server.name: kibana
+server.host: 0.0.0.0
+elasticsearch.hosts: [ "http://elasticsearch:9200" ]
+```
