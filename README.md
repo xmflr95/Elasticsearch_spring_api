@@ -78,14 +78,16 @@ ELK Stack Version: 7.10.2 OSS
     └── config
         └── kibana.yml
 ```
+[elastic](https://www.docker.elastic.co/r/elasticsearch/elasticsearch-oss)에서 제공하는 Elasticsearch, Kibana 이미지를 가져오고 `elasticsearch.yml`, `kibana.yml`을 커스텀한 파일로 변경
 
 ### Elasticsearch
-[elastic](https://www.docker.elastic.co/r/elasticsearch/elasticsearch-oss)에서 제공하는 Elasticsearch 이미지를 가져오고 `elasticsearch.yml`을 커스텀한 파일로 변경
+#### `Dockerfile`
 ```Dockerfile
 FROM docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
 COPY ./config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
 ```
 ### Kibana
+#### `Dockerfile`
 ```Dockerfile
 server.name: kibana
 server.host: 0.0.0.0
