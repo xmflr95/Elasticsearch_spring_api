@@ -91,5 +91,5 @@ COPY ./config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.ym
 ```Dockerfile
 server.name: kibana
 server.host: 0.0.0.0
-elasticsearch.hosts: [ "http://elasticsearch:9200" ]
+elasticsearch.hosts: [ "http://elasticsearch:9200" ] # elasticsearch 컨테이너명을 
 ```
